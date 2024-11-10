@@ -15,7 +15,7 @@
   "scripts": {
     "phpunit": "phpunit --verbose --colors=always",
     "test-poker": [
-      "phpunit --verbose --colors=always test/PokerHandTest.php"
+      "phpunit --verbose --colors=always -- test/PokerHandTest.php"
     ],
     "test-all": [
       "@phpunit"

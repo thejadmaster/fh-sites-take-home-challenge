@@ -9,6 +9,6 @@ return [
   'straight' => 5,
   'threeOfAKind' => 4,
   'twoPair' => 3,
-  'pair' => 2,
+  'onePair' => 2,
   'highCard' => 1,
 ];

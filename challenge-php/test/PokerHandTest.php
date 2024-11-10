@@ -7,6 +7,7 @@ use Poker\PokerHand\PokerHand;
 
 class PokerHandTest extends TestCase
 {
+
     /**
      * @test
      */
@@ -69,7 +70,7 @@ class PokerHandTest extends TestCase
     public function itCanRankThreeOfAKind()
     {
         $threeOfAKindHand = new PokerHand('3h 3s 6s Ah 3d');
-        $this->assertEquals('Three of a Kind', $threeOfAKindHand->getRank());
+        $this->assertEquals('Three Of A Kind', $threeOfAKindHand->getRank());
     }
 
     /**
@@ -78,7 +79,7 @@ class PokerHandTest extends TestCase
     public function itCanRankFourOfAKind()
     {
         $fourOfAKindHand = new PokerHand('2s 2c 2h As 2d');
-        $this->assertEquals('Four of a Kind', $fourOfAKindHand->getRank());
+        $this->assertEquals('Four Of A Kind', $fourOfAKindHand->getRank());
     }
 
     /**
@@ -88,8 +89,12 @@ class PokerHandTest extends TestCase
     {
         $straightHand = new PokerHand('4h 8c 6d 5d 7s');
         $this->assertEquals('Straight', $straightHand->getRank());
-        $straightHand = new PokerHand('Qh 10h 9s Jc 8d');
-        $this->assertEquals('Straight', $straightHand->getRank());
+        $straightHandWithFaceCards = new PokerHand('Qh 10h 9s Jc 8d');
+        $this->assertEquals('Straight', $straightHandWithFaceCards->getRank());
+        $straightHandWithAceLow = new PokerHand('5c 4d 3d 2h As');
+        $this->assertEquals('Straight', $straightHandWithAceLow->getRank());
+        $straightHandQueenPair = new PokerHand('Qh 10h 9s Jc Qd');
+        $this->assertNotEquals('Straight', $straightHandQueenPair->getRank());
     }
 
     /**
@@ -99,7 +104,11 @@ class PokerHandTest extends TestCase
     {
         $straightFlushHand = new PokerHand('4c 8c 6c 5c 7c');
         $this->assertEquals('Straight Flush', $straightFlushHand->getRank());
-        $straightFlushHand2 = new PokerHand('Qd 10d 9d Jd 8d');
-        $this->assertEquals('Straight Flush', $straightFlushHand2->getRank());
+        $straightFlushWithFaceCardsHand = new PokerHand('Qd 10d 9d Jd 8d');
+        $this->assertEquals('Straight Flush', $straightFlushWithFaceCardsHand->getRank());
+        $straightHandWithAceLow = new PokerHand('5h 4h 3h 2h Ah');
+        $this->assertEquals('Straight Flush', $straightHandWithAceLow->getRank());
+        $straightNotFlushHand = new PokerHand('4s 8s 6h 5s 7s');
+        $this->assertNotEquals('Straight Flush', $straightNotFlushHand->getRank());
     }
 }
